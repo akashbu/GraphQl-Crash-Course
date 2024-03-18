@@ -1,4 +1,5 @@
 export const typeDefs = `#graphql
+
 type Game {
     id: ID!
     title: String!
@@ -25,5 +26,18 @@ type Query{
     game(id:ID!): Game
     authors: [Author]
     author(id:ID!): Author
+}
+type Mutation {
+    deleteGame(id:ID!): [Game]
+    addGame(game:AddGameInput!): Game
+    updateGame(id:ID!, game:updateGameInput!): Game
+}
+input AddGameInput {
+    title: String!
+    platform: [String!]!
+}
+input updateGameInput {
+    title: String
+    platform: [String!]
 }
 `
